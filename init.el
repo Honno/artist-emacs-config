@@ -68,3 +68,35 @@
   )
 
 (use-package swiper :ensure t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (figlet counsel which-key use-package ivy general))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; undo tree
+(use-package undo-tree :ensure t)
+
+;; figlet
+(use-package figlet :ensure t)
+
+;; start emacs here
+(find-file "/home/matthew/.emacs.d/init.el")
+
+;; sensible artist mode bindings
+(add-hook 'artist-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "<f1>") 'artist-select-op-pen-line) ; f2 = pen mode
+            (local-set-key (kbd "<f2>") 'artist-select-op-line)     ; f3 = line
+	    (local-set-key (kbd "<f3>") 'artist-select-op-square)   ; f4 = rectangle
+	    (local-set-key (kbd "<f4>") 'artist-select-op-ellipse)  ; f5 = ellipse
+	    (local-set-key (kbd "C-z") 'undo-tree-undo)
+	    (local-set-key (kbd "C-S-Z") 'undo-tree-redo)
+	    ))
